@@ -28,19 +28,17 @@ def listdir(path):
 
     return [f for f in os.listdir(path) if f not in (('.svn',))]
 
-def isFolderContentEqual(a, b):
+def assertFolderContentEqual(a, b):
     len_a = len(a)
     for root, dirs, files in os.walk(a):
         folder_part = root[len_a:].strip(os.path.sep)
         
         if not os.path.exists(os.path.join(b, folder_part)):
-            warnings.warn("%s not exists" % (os.path.join(b, folder_part)))
-            return False
+            raise IOError, "%s does not exist" % (os.path.join(b, folder_part))
 
         # Compare files and directory
         if listdir(root) != listdir(os.path.join(b, folder_part)):
-            warnings.warn("%s != %s" % (listdir(root), listdir(os.path.join(b, folder_part))))
-            return False
+            raise IOError, "expected file listing %s != %s" % (listdir(root), listdir(os.path.join(b, folder_part)))
         
         # Compare files contents
         for f in files:
@@ -48,10 +46,7 @@ def isFolderContentEqual(a, b):
                 os.path.join(b, folder_part, f),
                 os.path.join(root, f)
             ):
-                warnings.warn("%s != %s" % (os.path.join(b, folder_part, f), os.path.join(root, f)))
-                return False
-
-    return True
+                raise IOError, "content of %s != %s" % (os.path.join(b, folder_part, f), os.path.join(root, f))
 
 def createPackage(package_name, buildout):
     tmp = here_cross(('tmp',))
@@ -59,14 +54,14 @@ def createPackage(package_name, buildout):
     if os.path.isdir(tmp):
         shutil.rmtree(tmp)
 
-    cmd = 'create -t advanced_package %s package=%s version= description= long_description= keywords= author= author_email= url= license_name= zip_safe= buildout=%s -o %s' % (package_name, package_name, buildout, tmp)
+    cmd = 'create -t modern_package %s source_dir=src package=%s version= description= long_description= keywords= author= author_email= url= license_name= zip_safe= buildout=%s -o %s' % (package_name, package_name, buildout, tmp)
     paster(cmd)
 
 
-    assert isFolderContentEqual(
-        os.path.join(tmp, package_name),
-        here_cross((package_name, ))
-    )
+    assertFolderContentEqual(
+          here_cross((package_name, )),
+          os.path.join(tmp, package_name),
+          )
 
     if os.path.isdir(tmp):
         shutil.rmtree(tmp)
