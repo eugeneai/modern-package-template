@@ -9,6 +9,7 @@ class ModernPackageTemplate(Template):
     _template_dir = 'templates'
     summary = "Package with distribute and buildout support"
     vars = [
+        var('source_dir', 'source directory', default='src'),
         var('version', 'Version (like 0.1)', default='0.1'),
         var('description', 'One-line description of the package'),
         var('keywords', 'Space-separated keywords/tags'),
@@ -28,7 +29,7 @@ class ModernPackageTemplate(Template):
 
     def post(self, command, output_dir, vars):
         template_dir = self.template_dir()
-        current_dir = os.path.join(output_dir, "src")
+        current_dir = os.path.join(output_dir, vars['source_dir'])
             
         # apparently .dotfiles are not copied by Paster
         hidden_files = ['.hgignore', '.gitignore']
