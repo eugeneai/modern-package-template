@@ -1,4 +1,6 @@
-setup.cfg
+MANIFEST.in
+NEWS.rst
+README.rst
 setup.py
 src/my/__init__.py
 src/my.name.space.egg-info/PKG-INFO
