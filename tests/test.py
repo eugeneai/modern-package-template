@@ -59,7 +59,7 @@ def createPackage(package_name, buildout):
     if os.path.isdir(tmp):
         shutil.rmtree(tmp)
 
-    cmd = 'create -t advanced_package %s package=%s version= description= long_description= keywords= author= author_email= url= license_name= zip_safe= buildout=%s -o %s' % (package_name, package_name, buildout, tmp)
+    cmd = 'create -t modern_package %s package=%s version= description= long_description= keywords= author= author_email= url= license_name= zip_safe= buildout=%s -o %s' % (package_name, package_name, buildout, tmp)
     paster(cmd)
 
 

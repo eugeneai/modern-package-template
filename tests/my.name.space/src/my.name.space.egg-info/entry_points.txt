@@ -1,3 +1,3 @@
+[console_scripts]
+my.name.space = my.name.space:main
 
-      # -*- Entry points: -*-
-      
