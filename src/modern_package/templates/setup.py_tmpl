@@ -19,6 +19,14 @@ install_requires = [
     # http://packages.python.org/distribute/setuptools.html#declaring-dependencies
 ]
 
+tests_requires = [
+    # List your project testing dependencies here.
+]
+
+dev_requires = [
+    # List your project development dependencies here.\
+]
+
 
 setup(
     name={{repr(project)}},
@@ -47,6 +55,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
+    extras_require={
+          'tests': tests_requires,
+          'dev': dev_requires,
+    },
     entry_points={
         'console_scripts':
             ['{{project}}={{package}}:main']
