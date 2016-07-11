@@ -30,7 +30,6 @@ dev_requires = [
 
 setup(
     name={{repr(project)}},
-setup(name={{repr(project)}},
     version=version,
     description="{{description or ''}}",
     long_description=README + '\n\n' + NEWS,
