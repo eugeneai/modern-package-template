@@ -17,6 +17,9 @@ install_requires = [
     # List your project dependencies here.
     # For more details, see:
     # http://packages.python.org/distribute/setuptools.html#declaring-dependencies
+    # Packages with fixed versions
+    # "<package1>==0.1",
+    # "<package2>==0.3.0",
 ]
 
 tests_requires = [
@@ -27,6 +30,11 @@ dev_requires = [
     # List your project development dependencies here.\
 ]
 
+dependency_links = [
+    # Sources for some fixed versions packages
+    #'https://github.com/<user1>/<package1>/archive/master.zip#egg=<package1>-0.1',
+    #'https://github.com/<user2>/<package2>/archive/master.zip#egg=<package2>-0.3.0',
+]
 
 setup(
     name={{repr(project)}},
@@ -56,6 +64,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
+    dependency_links = dependency_links,
     extras_require={
           'tests': tests_requires,
           'dev': dev_requires,
