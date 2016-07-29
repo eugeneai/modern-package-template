@@ -47,9 +47,9 @@ dependency_links = [
 #LG_HEADERS=os.path.join(TOP_DIR)
 
 ext_modules=[
-#    Extension("icc.linkgrammar.cplinkgrammar",
-#              sources=["src/icc/linkgrammar/cplinkgrammar.pyx"],
-#              libraries=["link-grammar"],
+#    Extension("{{project}}.cython_module",
+#              sources=["{{source_dir}}/./{{poject}}/cython_module.pyx"],
+#              libraries=["gdal"],
 #    )
 ]
 
@@ -92,5 +92,5 @@ setup(
     },
     #ext_modules = cythonize(ext_modules),
     #test_suite = 'nose.collector',
-    setup_requires=['nose>=1.0','Cython','coverage']
+    #setup_requires=['nose>=1.0','Cython','coverage']
 )

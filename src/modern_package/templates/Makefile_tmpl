@@ -7,10 +7,10 @@
 #TOP_DIR=
 
 #A virtualenv name
-LPYTHON=python3
-V=$(PWD)/../$(LPYTHON)
-VB=$(V)/bin
-PYTHON=$(VB)/$(LPYTHON)
+LPYTHON=qgis
+V=$(HOME)/.pyenv/versions/$(LPYTHON)
+#VB=$(V)/bin
+#PYTHON=$(VB)/$(LPYTHON)
 #ROOT=$(PWD)
 #INI={{project}}
 #LCAT={{source_dir}}/{{project}}/locale/
