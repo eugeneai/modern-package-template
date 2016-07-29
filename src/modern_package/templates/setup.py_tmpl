@@ -5,6 +5,8 @@
 
 from setuptools import setup, find_packages
 import sys, os
+#from Cython.Build import cythonize
+from setuptools.extension import Extension
 
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
@@ -20,6 +22,7 @@ install_requires = [
     # Packages with fixed versions
     # "<package1>==0.1",
     # "<package2>==0.3.0",
+    # "nose", "coverage"   # Put it here.
 ]
 
 tests_requires = [
@@ -34,6 +37,20 @@ dependency_links = [
     # Sources for some fixed versions packages
     #'https://github.com/<user1>/<package1>/archive/master.zip#egg=<package1>-0.1',
     #'https://github.com/<user2>/<package2>/archive/master.zip#egg=<package2>-0.3.0',
+]
+
+#Cython extension
+
+#TOP_DIR="/home/eugeneai/Development/codes/NLP/workprog/tmp/link-grammar"
+#LG_DIR="link-grammar"
+#LG_LIB_DIR=os.path.join(TOP_DIR,LG_DIR,".libs")
+#LG_HEADERS=os.path.join(TOP_DIR)
+
+ext_modules=[
+#    Extension("icc.linkgrammar.cplinkgrammar",
+#              sources=["src/icc/linkgrammar/cplinkgrammar.pyx"],
+#              libraries=["link-grammar"],
+#    )
 ]
 
 setup(
@@ -72,5 +89,8 @@ setup(
     entry_points={
         'console_scripts':
             ['{{project}}={{package}}:main']
-    }
+    },
+    #ext_modules = cythonize(ext_modules),
+    #test_suite = 'nose.collector',
+    setup_requires=['nose>=1.0','Cython','coverage']
 )
