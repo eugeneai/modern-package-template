@@ -28,7 +28,7 @@ def listdir(path):
 
     return [f for f in os.listdir(path) if f not in (('.svn',))]
 
-def assertFolderContentEqual(a, b):
+def isFolderContentEqual(a, b):
     len_a = len(a)
     for root, dirs, files in os.walk(a):
         folder_part = root[len_a:].strip(os.path.sep)
@@ -58,10 +58,10 @@ def createPackage(package_name, buildout):
     paster(cmd)
 
 
-    assertFolderContentEqual(
-          here_cross((package_name, )),
-          os.path.join(tmp, package_name),
-          )
+    assert isFolderContentEqual(
+        os.path.join(tmp, package_name),
+        here_cross((package_name, ))
+    )
 
     if os.path.isdir(tmp):
         shutil.rmtree(tmp)

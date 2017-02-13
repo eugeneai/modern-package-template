@@ -86,6 +86,7 @@ setup(
           'tests': tests_requires,
           'dev': dev_requires,
     },
+    test_suite='tests',
     entry_points={
         'console_scripts':
             ['{{project}}={{package}}:main']

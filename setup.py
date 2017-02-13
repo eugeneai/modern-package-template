@@ -2,6 +2,15 @@
 from setuptools import setup, find_packages
 import sys, os
 
+# Hack to prevent stupid "TypeError: 'NoneType' object is not callable" error
+# in multiprocessing/util.py _exit_function when running `python
+# setup.py test` (see
+# http://www.eby-sarna.com/pipermail/peak/2010-May/003357.html)
+try:
+    import multiprocessing
+except ImportError:
+    pass
+
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
 NEWS = open(os.path.join(here, 'NEWS.rst')).read()
@@ -37,6 +46,8 @@ setup(name='modern-package-template',
           "Paste",
           "PasteScript",
       ],
+      tests_require=['nose'],
+      test_suite='nose.collector',
       entry_points="""
       [paste.paster_create_template]
       modern_package = modern_package:ModernPackageTemplate
