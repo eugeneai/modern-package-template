@@ -48,7 +48,7 @@ dependency_links = [
 
 ext_modules=[
 #    Extension("{{project}}.cython_module",
-#              sources=["{{source_dir}}/./{{poject}}/cython_module.pyx"],
+#              sources=["{{source_dir}}/./{{project}}/cython_module.pyx"],
 #              libraries=["gdal"],
 #    )
 ]
