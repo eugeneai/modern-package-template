@@ -4,7 +4,9 @@ python:
   - 2.5
   - 2.6
   - 2.7
-  - 3.2
+  - 3.4
+  - 3.5
+  - 3.6
   - pypy
 
-script: python setup.py test
+script: nosetest . 
