@@ -9,7 +9,7 @@ News
 0.2a1
 -----
 
-*Release date: UNRELEASED*
+* Release date: UNRELEASED*
 
 * Example news entry for the in-development version
 

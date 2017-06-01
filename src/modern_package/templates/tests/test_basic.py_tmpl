@@ -1,8 +1,8 @@
 from nose.plugins.skip import SkipTest
-from nose.tools import assert_raises
+from nose.tools import assert_raises, nottest
 
 #@SkipTest
-class BasicTests:
+class TestBasic:
 
     def setUp(self):
         pass
