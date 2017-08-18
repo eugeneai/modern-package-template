@@ -7,7 +7,7 @@
 #TOP_DIR=
 
 #A virtualenv name
-LPYTHON=qgis
+#LPYTHON=
 V=$(HOME)/.pyenv/versions/$(LPYTHON)
 #VB=$(V)/bin
 #PYTHON=$(VB)/$(LPYTHON)
